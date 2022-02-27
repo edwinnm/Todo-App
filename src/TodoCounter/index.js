@@ -3,6 +3,7 @@ import styled from "styled-components";
 const CounterContainer = styled.div`
     position: relative;
     width: 50%;
+    opacity: ${props => (props.loading) && 0.25 };
 `;
 const CounterText = styled.p`
     font-size: 1.4rem;
@@ -14,10 +15,10 @@ const CounterText = styled.p`
         font-weight: bolder;
     }
 `;
-function TodoCounter ({totalTodos, completedTodos}){
+function TodoCounter ({totalTodos, completedTodos, loading}){
  
     return (
-    <CounterContainer>
+    <CounterContainer loading = {loading} >
         <CounterText>Has completado <span> {completedTodos} de {totalTodos} </span> TODOs</CounterText>
     </CounterContainer>)
 }

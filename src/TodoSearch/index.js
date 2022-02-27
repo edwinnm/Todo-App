@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import { IoSearch } from "react-icons/io5";
 
-function TodoSearch({searchValue, setSearchValue}){
+function TodoSearch({searchValue, setSearchValue, loading}){
     
     const onChangeHandler  = (event) =>{
         setSearchValue(event.target.value);
     }
     return (
-        <SearchContainer>
-            <label htmlFor="searchTodo">
+        <SearchContainer loading = {loading}>
+            <label htmlFor = "searchTodo">
                 <input 
-                    id="searchTodo"
-                    value={searchValue}
-                    onChange={onChangeHandler}
+                    id = "searchTodo"
+                    placeholder="Busca tu TODO ..."
+                    value = {searchValue}
+                    onChange = {onChangeHandler}
+                    disabled = {loading}
                 />
                 <IoSearch size="20px"/>
             </label>
@@ -29,6 +31,7 @@ const SearchContainer = styled.div`
     border-radius: 20px;
     border: solid 1px #6b7dff;
     box-shadow: rgba(134, 149, 255, 0.4) 0px 4px 12px;
+    opacity: ${props => (props.loading) && 0.75 };
     input{
         height: 20px;
         width: 220px;
@@ -36,11 +39,11 @@ const SearchContainer = styled.div`
         background-color: transparent;
         border: none;
     }
-    input:focus,
-    select:focus,
-    textarea:focus,
-    button:focus {
+    input:focus{
         outline: none;
+    }
+    input:disabled{
+        opacity: 0.75;
     }
     svg{
         vertical-align: bottom;

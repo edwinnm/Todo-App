@@ -16,8 +16,8 @@ function TodoEmpty({search}){
     return(
         <EmptyContainer>
             <img src='https://cdn.pixabay.com/photo/2014/08/26/19/16/notebook-428293_960_720.jpg' alt='empty'></img>
-            {search === false && <p> Parece que no tienes TODOs. Ingresa un nuevo TODO.</p>}
-            {search === true &&<p>No se han encontrado resultados bajo esa busqueda.</p>}
+            {search === '' && <p> Parece que no tienes TODOs. Ingresa un nuevo TODO.</p>}
+            {search !== '' &&<p> {`No se han encontrado resultados para ${search}.`}</p>}
         </EmptyContainer>
     )
 }
